@@ -2,16 +2,19 @@ import React, { FunctionComponent } from 'react';
 import { Global, css } from '@emotion/react';
 
 const defaultStyle = css`
-@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap'); * {
+  @import url('<https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap>');
+  @import url('<https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap>');
+
+  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Otomanopee One', sans-serif;
+    font-family: 'Nanum Myeongjo', serif;
   }
 
   html,
   body,
-  #__gatsby {
+  #___gatsby {
     height: 100%;
   }
 
@@ -28,3 +31,5 @@ const GlobalStyle: FunctionComponent = function () {
 };
 
 export default GlobalStyle;
+
+// https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap
