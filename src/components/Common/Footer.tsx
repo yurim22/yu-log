@@ -9,6 +9,12 @@ const FooterWrapper = styled.div`
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
+  background-color: #1b998b;
+  color: #ffffff;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const Footer: FunctionComponent = function () {
