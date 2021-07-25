@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
 import GlobalStyle from 'components/Common/GlobalStyle';
 import Introduction from 'components/Main/Introduction';
 import Footer from 'components/Common/Footer';
-import CategoryList from 'components/Main/CategoryList';
+import CategoryList, { CategoryListProps } from 'components/Main/CategoryList';
 import PostList, { PostType } from 'components/Main/PostList';
 import { graphql } from 'gatsby';
 import { ProfileImageProps } from 'components/Main/ProfileImage';
@@ -24,11 +24,6 @@ interface IndexPageProps {
     };
   };
 }
-const CATEGORY_LIST = {
-  All: 5,
-  Web: 3,
-  Mobile: 2,
-};
 
 const Container = styled.div`
   display: flex;
@@ -50,58 +45,41 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     typeof parsed.category !== 'string' || !parsed.category
       ? 'All'
       : parsed.category;
+  const categoryList = useMemo(
+    () =>
+      edges.reduce(
+        (
+          list: CategoryListProps['categoryList'],
+          {
+            node: {
+              frontmatter: { categories },
+            },
+          }: PostType,
+        ) => {
+          categories.forEach(category => {
+            if (list[category] === undefined) list[category] = 1;
+            else list[category]++;
+          });
 
+          list['All']++;
+          return list;
+        },
+        { All: 0 },
+      ),
+    [],
+  );
   return (
     <Container>
       <GlobalStyle />
       <Introduction profileImage={fluid} />
       <CategoryList
         selectedCategory={selectedCategory}
-        categoryList={CATEGORY_LIST}
+        categoryList={categoryList}
       />
-      <PostList posts={edges} />
+      <PostList selectedCategory={selectedCategory} posts={edges} />
       <Footer />
     </Container>
   );
 };
 
 export default IndexPage;
-
-export const queryPostList = graphql`
-  query queryPostList {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            summary
-            date(formatString: "YYYY.MM.DD.")
-            categories
-            thumbnail {
-              childImageSharp {
-                fluid(
-                  maxWidth: 768
-                  maxHeight: 200
-                  fit: INSIDE
-                  quality: 100
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    file(name: { eq: "profile-image" }) {
-      childImageSharp {
-        fluid(maxWidth: 120, maxHeight: 120, fit: INSIDE, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-  }
-`;
