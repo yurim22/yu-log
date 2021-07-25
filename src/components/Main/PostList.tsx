@@ -14,14 +14,14 @@ export type PostType = {
       thumbnail: {
         childImageSharp: {
           fluid: FluidObject;
-        }
-      }
-    }
-  }
-}
+        };
+      };
+    };
+  };
+};
 
 interface PostListProps {
-  posts: PostType[]
+  posts: PostType[];
 }
 
 const PostListWrapper = styled.div`
@@ -39,23 +39,12 @@ const PostListWrapper = styled.div`
   }
 `;
 
-const PostList: FunctionComponent<PostListProps> = function ({posts}) {
+const PostList: FunctionComponent<PostListProps> = function ({ posts }) {
   return (
     <PostListWrapper>
-      {posts.map(
-        ({
-          node:{
-            id,
-            frontmatter
-          },
-        }: PostType) => (
-          <PostItem 
-            {...frontmatter}
-            link="<https://www.google.co.kr>"
-            key={id}
-          />
-        )
-      )}
+      {posts.map(({ node: { id, frontmatter } }: PostType) => (
+        <PostItem {...frontmatter} link="<https://www.google.co.kr>" key={id} />
+      ))}
     </PostListWrapper>
   );
 };
