@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   height: 400px;
   margin: 0 auto;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     width: 100%;
     height: 300px;
     padding: 0 20px;
@@ -37,7 +37,6 @@ const SubTitle = styled.div`
   @media (max-width: 768px) {
     font-size: 15px;
   }
-
 `;
 
 const Title = styled.div`
@@ -49,11 +48,13 @@ const Title = styled.div`
   }
 `;
 
-const Introduction: FunctionComponent<IntroductionProps> = function ({profileImage}) {
+const Introduction: FunctionComponent<IntroductionProps> = function ({
+  profileImage,
+}) {
   return (
     <Background>
       <Wrapper>
-        <ProfileImage profileImage={profileImage}/>
+        <ProfileImage profileImage={profileImage} />
 
         <div>
           <SubTitle>Nice to Meet You,</SubTitle>

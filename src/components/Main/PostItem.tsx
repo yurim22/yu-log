@@ -11,7 +11,7 @@ interface PostItemProps {
   thumbnail: {
     childImageSharp: {
       fluid: FluidObject;
-    }
+    };
   };
   link: string;
 }
@@ -97,7 +97,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
   categories,
   summary,
   thumbnail: {
-    childImageSharp: { fluid }
+    childImageSharp: { fluid },
   },
   link,
 }) {

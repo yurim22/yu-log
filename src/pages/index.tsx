@@ -83,3 +83,42 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
 };
 
 export default IndexPage;
+
+export const queryPostList = graphql`
+  query queryPostList {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            summary
+            date(formatString: "YYYY.MM.DD.")
+            categories
+            thumbnail {
+              childImageSharp {
+                fluid(
+                  maxWidth: 768
+                  maxHeight: 200
+                  fit: INSIDE
+                  quality: 100
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    file(name: { eq: "profile-image" }) {
+      childImageSharp {
+        fluid(maxWidth: 120, maxHeight: 120, fit: INSIDE, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`;
