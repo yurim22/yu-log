@@ -6,6 +6,7 @@
 
 // You can delete this file if you're not using it
 
+const { createFilePath } = require('gatsby-source-filesystem');
 const path = require('path');
 
 // Setup Import Alias
@@ -26,3 +27,14 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 
 // `alias` 에서, components로 시작하는 경로는 모두 src 폴더 내의 components 폴더로 매핑해주어 
 // 절대 경로를 사용할 수 있도록 해준다.
+
+// Generate a Slug Each Post Data
+exports.onCreateNode = ({node, getNode, actions}) => {
+  const {createNodeField} = actions;
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({node, getNode});
+
+    createNodeField({node, name: 'slug', value: slug})
+  }
+}
