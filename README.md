@@ -112,3 +112,6 @@ Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby f
 개인 블로그 제작
 dark mode 추가
 인터렉티브 웹 제작
+scroll navigation 추가
+
+### GOAL
