@@ -6,9 +6,6 @@ export interface ProfileImageProps {
   profileImage: FluidObject;
 }
 
-// 자신이 원하는 프로필 이미지 링크로 설정해주세요.
-const PROFILE_IMAGE_LINK = '/assets/profile.jpg';
-
 const ProfileImageWrapper = styled(Img)`
   width: 120px;
   height: 120px;
