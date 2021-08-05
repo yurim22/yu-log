@@ -52,9 +52,9 @@ exports.createPages = async ({actions, graphql, reporter }) => {
           fields: [frontmatter___date, frontmatter___title]
         }
       ) {
-        edges{
-          node{
-            fields{
+        edges {
+          node {
+            fields {
               slug
             }
           }
@@ -65,6 +65,7 @@ exports.createPages = async ({actions, graphql, reporter }) => {
 
   // Handling GraphQL Query Error
   if (queryAllMarkdownData.errors) {
+    console.log('errorrrrr in graphql')
     reporter.panicOnBuild(`Error while running query`);
     return;
   }
