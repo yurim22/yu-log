@@ -1,4 +1,5 @@
 import React, { createRef, FunctionComponent, useEffect} from 'react';
+import styled from '@emotion/styled';
 
 const src="https://utteranc.es/client.js";
 const repo = 'yurim22/yurim22.github.io';
@@ -13,6 +14,11 @@ type UtterancesAttributesType = {
     async: string;
 };
 
+const UtterancesWrapper = styled.div`
+    @media(max-width: 768px) {
+        padding: 0 20px;
+    }
+`
 const CommentWidget: FunctionComponent = function() {
     const element= createRef<HTMLDivElement>();
 
@@ -24,7 +30,7 @@ const CommentWidget: FunctionComponent = function() {
         const attribute: UtterancesAttributesType = {
             src,
             repo,
-            'issue-term': 'title',
+            'issue-term': 'pathname',
             label: 'Comment',
             theme: `github-light`,
             crossorigin: 'anonymous',
@@ -39,7 +45,7 @@ const CommentWidget: FunctionComponent = function() {
 
     }, [])
 
-    return <div ref={element} />
+    return <UtterancesWrapper ref={element} />
 };
 
 export default CommentWidget;
