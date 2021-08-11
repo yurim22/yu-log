@@ -25,47 +25,48 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
   });
 };
 
-// `alias` 에서, components로 시작하는 경로는 모두 src 폴더 내의 components 폴더로 매핑해주어 
+// `alias` 에서, components로 시작하는 경로는 모두 src 폴더 내의 components 폴더로 매핑해주어
 // 절대 경로를 사용할 수 있도록 해준다.
 
 // Generate a Slug Each Post Data
-exports.onCreateNode = ({node, getNode, actions}) => {
-  const {createNodeField} = actions;
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({node, getNode});
+    const slug = createFilePath({ node, getNode });
 
-    createNodeField({node, name: 'slug', value: slug})
+    createNodeField({ node, name: 'slug', value: slug });
   }
-}
+};
 
-exports.createPages = async ({actions, graphql, reporter }) => {
-  const {createPage} = actions;
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  const { createPage } = actions;
 
   // Get all markdown file for paging
   const queryAllMarkdownData = await graphql(
     `
-    {
-      allMarkdownRemark(
-        sort: {
-          order: DESC
-          fields: [frontmatter___date, frontmatter___title]
-        }
-      ) {
-        edges {
-          node {
-            fields {
-              slug
+      {
+        allMarkdownRemark(
+          sort: {
+            order: DESC
+            fields: [frontmatter___date, frontmatter___title]
+          }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }`
+    `,
   );
 
   // Handling GraphQL Query Error
   if (queryAllMarkdownData.errors) {
-    console.log('errorrrrr in graphql')
+    console.log('errorrrrr in graphql');
     reporter.panicOnBuild(`Error while running query`);
     return;
   }

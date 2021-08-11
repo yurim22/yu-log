@@ -42,7 +42,9 @@ const BackgroundImage = styled((props: GatsbyImgProps) => (
 `;
 
 const PostHead: FunctionComponent<PostHeadProps> = function ({
-  title, date,categories,
+  title,
+  date,
+  categories,
   thumbnail: {
     childImageSharp: { fluid },
   },

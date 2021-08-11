@@ -12,13 +12,15 @@ const ProfileImageWrapper = styled(Img)`
   margin-bottom: 30px;
   border-radius: 50%;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     width: 80px;
     height: 80px;
   }
 `;
 
-const ProfileImage: FunctionComponent<ProfileImageProps> = function ({profileImage}) {
+const ProfileImage: FunctionComponent<ProfileImageProps> = function ({
+  profileImage,
+}) {
   return <ProfileImageWrapper fluid={profileImage} alt="Profile Image" />;
 };
 
