@@ -118,3 +118,5 @@ Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby f
 * scroll navigation 추가
 
 * 404 page handling
+
+### Yurim's 개발일지
