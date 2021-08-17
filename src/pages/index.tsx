@@ -17,8 +17,8 @@ interface IndexPageProps {
         title: string;
         description: string;
         siteUrl: string;
-      }
-    },
+      };
+    };
     allMarkdownRemark: {
       edges: PostType[];
     };
@@ -35,7 +35,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
   data: {
     site: {
-      siteMetadata: {title, description, siteUrl}
+      siteMetadata: { title, description, siteUrl },
     },
     allMarkdownRemark: { edges },
     file: {
@@ -73,7 +73,12 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     [],
   );
   return (
-    <Template title={title} description={description} url={siteUrl} image={publicURL}>
+    <Template
+      title={title}
+      description={description}
+      url={siteUrl}
+      image={publicURL}
+    >
       <Introduction profileImage={fluid} />
       <CategoryList
         selectedCategory={selectedCategory}

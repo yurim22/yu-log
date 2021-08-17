@@ -41,7 +41,7 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
   title,
   date,
   categories,
-  thumbnail
+  thumbnail,
 }) {
   return (
     <PostHeadWrapper>

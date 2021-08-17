@@ -3,9 +3,23 @@ module.exports = {
     title: `yurim's 개발일지`,
     description: `봄이는 귀여워`,
     author: `Yurim`,
-    siteUrl: '<https://my-website-link.com>', // 배포 후 변경 예정
+    siteUrl: '<https://yulog.com>', // 배포 후 변경 예정
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: '<https://yulog.com/>',
+        stripQueryString: true,
+      },
+    },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
@@ -67,20 +81,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-canonical-urls',
-      options: {
-        siteUrl: '<https://my-website.com/>',
-        stripQueryString: true,
-      },
-    },
-    'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
   ],

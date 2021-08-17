@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 import Template from 'components/Common/Template';
-import PostHead, { PostHeadProps } from 'components/Post/PostHead';
+import PostHead from 'components/Post/PostHead';
 import PostContent from 'components/Post/PostContent';
 import CommentWidget from 'components/Post/CommentWidget';
 import { FluidObject } from 'gatsby-image';
@@ -23,8 +23,8 @@ interface PostTemplateProps {
                   fluid: FluidObject;
                 };
                 publicURL: string;
-              }
-            }
+              };
+            };
           };
         },
       ];
@@ -32,26 +32,29 @@ interface PostTemplateProps {
   };
   location: {
     href: string;
-  }
+  };
 }
 
 const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
     allMarkdownRemark: { edges },
   },
-  location: { href }
+  location: { href },
 }) {
   const {
-    node: { html, frontmatter: {
-      title,
-      summary,
-      date,
-      categories,
-      thumbnail: {
-        childImageSharp: {fluid},
-        publicURL
-      }
-    } },
+    node: {
+      html,
+      frontmatter: {
+        title,
+        summary,
+        date,
+        categories,
+        thumbnail: {
+          childImageSharp: { fluid },
+          publicURL,
+        },
+      },
+    },
   } = edges[0];
   console.log(edges);
 
