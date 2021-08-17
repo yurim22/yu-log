@@ -3,13 +3,13 @@ module.exports = {
     title: `yurim's 개발일지`,
     description: `봄이는 귀여워`,
     author: `Yurim`,
-    siteUrl: '<https://yulog.com>', // 배포 후 변경 예정
+    siteUrl: 'https://yurim22.github.io', // 배포 후 변경 예정
   },
   plugins: [
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: '<https://yulog.com/>',
+        siteUrl: 'https://yurim22.github.io',
         stripQueryString: true,
       },
     },
