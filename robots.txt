@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://yurim22.github.io/sitemap/sitemap-index.xml
+Host: https://yurim22.github.io
