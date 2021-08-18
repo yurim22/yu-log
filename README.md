@@ -107,6 +107,7 @@ Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby f
 ## Refernce
 
 [inflearn Gatsby 강의](https://www.inflearn.com/course/gatsby-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8/dashboard)
+완강!
 
 ### GOAL
 * 개인 블로그 제작
